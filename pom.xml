@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bizbook.product</groupId>
+    <artifactId>hbase-increment-index</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+
+    <properties>
+
+        <!-- log4j -->
+        <log4j.version>1.7.2</log4j.version>
+        <!-- project encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--hbase version-->
+        <hbase.version>0.98.12-hadoop2</hbase.version>
+        <!-- lucene-solr version -->
+        <lucene-solr.version>5.1.0</lucene-solr.version>
+        <!--hadoop version-->
+        <apache-hadoop.version>2.7.1</apache-hadoop.version>
+        <!-- config version -->
+        <config.version>1.2.1</config.version>
+
+
+    </properties>
+
+    <dependencies>
+    <!--hbase client dependency-->
+    <dependency>
+        <groupId>org.apache.hbase</groupId>
+        <artifactId>hbase-client</artifactId>
+        <version>${hbase.version}</version>
+        <exclusions>
+            <exclusion>
+                <artifactId>hadoop-common</artifactId>
+                <groupId>org.apache.hadoop</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>hadoop-common</artifactId>
+                <groupId>org.apache.hadoop</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>hadoop-hdfs</artifactId>
+                <groupId>org.apache.hadoop</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>hadoop-mapreduce-client-core</artifactId>
+                <groupId>org.apache.hadoop</groupId>
+            </exclusion>
+            <exclusion>
+                <artifactId>slf4j-log4j12</artifactId>
+                <groupId>org.slf4j</groupId>
+            </exclusion>
+        </exclusions>
+        <scope>provided</scope>
+    </dependency>
+
+            <!--hbase的服务端依赖-->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-server</artifactId>
+            <version>0.98.12-hadoop2</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-log4j12</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+        <!--加载配置配置文件工具包-->
+        <dependency>
+            <groupId>com.typesafe</groupId>
+            <artifactId>config</artifactId>
+            <version>${config.version}</version>
+        </dependency>
+
+
+
+    <!--solrj核心依赖 -->
+    <dependency>
+        <groupId>org.apache.solr</groupId>
+        <artifactId>solr-core</artifactId>
+        <version>${lucene-solr.version}</version>
+        <exclusions>
+            <exclusion>
+                <artifactId>slf4j-api</artifactId>
+                <groupId>org.slf4j</groupId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+    <!--Solrj客户端 -->
+    <dependency>
+        <groupId>org.apache.solr</groupId>
+        <artifactId>solr-solrj</artifactId>
+        <version>${lucene-solr.version}</version>
+        <exclusions>
+            <exclusion>
+                <artifactId>slf4j-api</artifactId>
+                <groupId>org.slf4j</groupId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+</dependencies>
+
+
+
+
+
+</project>
