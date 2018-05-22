@@ -75,4 +75,12 @@ httpcore-4.3.jar <br/>
 [我的Iteye博客](http://qindongliang.iteye.com/) <br/>
 
 
-###   公众号：我是攻城师（woshigcs） 如有问题，可在后台留言咨询
+## 个人博客
+
+<http://8090nixi.com/>
+
+## 我的公众号(woshigcs)
+
+有问题可关注我的公众号留言咨询
+
+![image](https://github.com/qindongliang/answer_sheet_scan/blob/master/imgs/gcs.jpg)
