@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by qindongliang on 2016/2/15.
@@ -39,7 +40,9 @@ public class HbaseSolrIndexCoprocesser extends BaseRegionObserver {
         SolrInputDocument doc =new SolrInputDocument();//实例化索引Doc
         doc.addField(config.getString("solr_hbase_rowkey_name"),rowkey);//添加主键
         for(String cf:config.getString("hbase_column_family").split(",")) {//遍历所有的列簇
-            for (Cell kv : put.getFamilyCellMap().get(Bytes.toBytes(cf))) {
+            List<Cell> cells = put.getFamilyCellMap().get(Bytes.toBytes(cf));
+            if(cells==null||cells.isEmpty()) continue; // 跳过取值为空或null的数据
+            for (Cell kv : cells ) {
                 String name=Bytes.toString(CellUtil.cloneQualifier(kv));//获取列名
                 String value=Bytes.toString(kv.getValueArray());//获取列值 or CellUtil.cloneValue(kv)
                 doc.addField(name,value);//添加到索引doc里面
