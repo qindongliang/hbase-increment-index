@@ -1,5 +1,5 @@
 # hbase-increment-index
-hbase+solr实现hbase的二级索引
+hbase+solr实现hbase的二级索引小例子
 
 ### 背景需求
 现有一张Hbase的表，数据量千万级+，而且不断有新的数据插入，或者无效数据删除，每日新增大概几百万数据，现在已经有离线的hive映射hbase 
